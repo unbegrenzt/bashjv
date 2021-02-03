@@ -15,8 +15,20 @@ dependencies {
     compile group: 'info.picocli', name: 'picocli', version: '4.6.1'
     // https://mvnrepository.com/artifact/com.github.lalyos/jfiglet
     compile group: 'com.github.lalyos', name: 'jfiglet', version: '0.0.8'
+    // https://mvnrepository.com/artifact/org.fusesource.jansi/jansi
+    compile group: 'org.fusesource.jansi', name: 'jansi', version: '2.2.0'
 }
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "tk.bashjv.service.Bashjv"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
