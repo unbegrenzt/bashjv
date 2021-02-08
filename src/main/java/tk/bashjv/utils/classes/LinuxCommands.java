@@ -14,6 +14,10 @@ import tk.bashjv.utils.intefaces.ConsoleCommands;
 public class LinuxCommands implements ConsoleCommands {
     @Override
     public String Command(BashCommand bashCommand) {
-        return null;
+        return switch (bashCommand) {
+            case VALID_PSCORE -> "pwsh -command \"$PSVersionTable.PSEdition\"";
+            case HELM_NAMESPACES -> "pwsh -command \"helm get all namespaces\"";
+            case HYPER_STATE -> "pwsh -command \"Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V\"";
+        };
     }
 }
