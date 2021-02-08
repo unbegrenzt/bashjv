@@ -4,10 +4,14 @@
 
 package tk.bashjv.subcommands;
 
+import org.fusesource.jansi.Ansi;
 import picocli.CommandLine.Spec;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Command;
+import tk.bashjv.external.BashGitLabRunner;
+import tk.bashjv.external.outputs.GitlabRunnerOutputs;
 
+import java.io.IOException;
 import java.util.concurrent.Callable;
 
 /**
@@ -26,14 +30,21 @@ public class GitlabRunner implements Callable<Integer> {
     @Spec CommandSpec spec;
 
     @Override
-    public Integer call() throws Exception {
+    public Integer call() {
         return 0;
     }
 
     @Command(name = "status",
             description = "Get the current status of the gitlab runner instance")
-    int status(){
-        spec.commandLine().getOut().println("");
-        return 0;
+    int status() {
+        try {
+            String consoleOutput = GitlabRunnerOutputs.gitlabRunnerStatus();
+            Ansi output = BashGitLabRunner.getRunnerStatus(consoleOutput);
+            spec.commandLine().getOut().println(output);
+            return 0;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 }

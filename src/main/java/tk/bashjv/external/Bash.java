@@ -19,11 +19,9 @@ public class Bash {
     /**
      * Execute string.
      *
-     * @param command the command
-     *                to execute to the bash
+     * @param command the command                to execute to the bash
      * @return the string output of the bash
-     * @throws IOException the io exception
-     * if can't access to the console
+     * @throws IOException the io exception if can't access to the console
      */
     public static String execute(String command) throws IOException {
         Process process = Runtime.getRuntime()
@@ -33,7 +31,7 @@ public class Bash {
 
     private static String printResults(Process process) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        String line = "",
+        String line,
                 output = "";
         while ((line = reader.readLine()) != null) {
             System.out.println(line);

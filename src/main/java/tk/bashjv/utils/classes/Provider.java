@@ -2,7 +2,13 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package tk.bashjv.utils;
+/*
+ * Develop by unbegrenzt at 2 - 2021.
+ */
+
+package tk.bashjv.utils.classes;
+
+import tk.bashjv.utils.enums.OsSystem;
 
 /**
  * The type Provider.

@@ -2,7 +2,11 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package tk.bashjv.utils;
+/*
+ * Develop by unbegrenzt at 2 - 2021.
+ */
+
+package tk.bashjv.utils.enums;
 
 /**
  * The enum Os system.
@@ -23,5 +27,5 @@ public enum OsSystem {
     /**
      * Error os system.
      */
-    ERROR;
+    ERROR
 }
