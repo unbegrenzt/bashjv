@@ -60,21 +60,20 @@ public class BashDoctorTest {
                         "Use -- " +
                         "@|BLUE wsl version 2 |@"
         ).toString();
-        System.out.println(expected);
         String actual = BashDoctor.getWslStatus(
                 "FeatureName      : Microsoft-Windows-Subsystem-Linux" + System.lineSeparator() +
-                        "DisplayName      : Subsistema de Windows para Linux" + System.lineSeparator() +
-                        "Description      : Proporciona servicios y entornos " + System.lineSeparator() +
-                        "para ejecutar herramientas y shells de Linux " + System.lineSeparator() +
-                        "de modo de usuario nativo " + System.lineSeparator() +
+                        "DisplayName      : Subsystem de Windows para Linux" + System.lineSeparator() +
+                        "Description      : Proportion services y enormous " + System.lineSeparator() +
+                        "para ejecta Merriment's y shells de Linux " + System.lineSeparator() +
+                        "de mod de usurious native " + System.lineSeparator() +
                         "                   en Windows." + System.lineSeparator() +
                         "RestartRequired  : Possible" + System.lineSeparator() +
                         "State            : Enabled" + System.lineSeparator() +
                         "CustomProperties :" + System.lineSeparator() +
-                        "   ServerComponent\\Description : Proporciona servicios" +
-                        " y entornos para ejecutar herramientas y shells de " + System.lineSeparator() +
-                        "   Linux de modo de usuario nativo en Windows." + System.lineSeparator() +
-                        "   ServerComponent\\DisplayName : Subsistema de Windows para Linux" + System.lineSeparator() +
+                        "   ServerComponent\\Description : Proportion services" +
+                        " y enormous para ejecta Merriment's y shells de " + System.lineSeparator() +
+                        "   Linux de mod de usurious native en Windows." + System.lineSeparator() +
+                        "   ServerComponent\\DisplayName : Subsystem de Windows para Linux" + System.lineSeparator() +
                         "   ServerComponent\\Id : 1033" + System.lineSeparator() +
                         "   ServerComponent\\Type : Feature" + System.lineSeparator() +
                         "   ServerComponent\\UniqueName : Microsoft-Windows-Subsystem-Linux" + System.lineSeparator() +
@@ -96,22 +95,22 @@ public class BashDoctorTest {
         System.out.println(expected);
         String actual = BashDoctor.getWslStatus(
                 "FeatureName      : Microsoft-Windows-Subsystem-Linux" + System.lineSeparator() +
-                "DisplayName      : Subsistema de Windows para Linux" + System.lineSeparator() +
-                "Description      : Proporciona servicios y entornos " + System.lineSeparator() +
-                        "para ejecutar herramientas y shells de Linux " + System.lineSeparator() +
-                        "de modo de usuario nativo " + System.lineSeparator() +
-                "                   en Windows." + System.lineSeparator() +
-                "RestartRequired  : Possible" + System.lineSeparator() +
-                "State            : Disabled" + System.lineSeparator() +
-                "CustomProperties :" + System.lineSeparator() +
-                "   ServerComponent\\Description : Proporciona servicios" +
-                        " y entornos para ejecutar herramientas y shells de " + System.lineSeparator() +
-                "   Linux de modo de usuario nativo en Windows." + System.lineSeparator() +
-                "   ServerComponent\\DisplayName : Subsistema de Windows para Linux" + System.lineSeparator() +
-                "   ServerComponent\\Id : 1033" + System.lineSeparator() +
-                "   ServerComponent\\Type : Feature" + System.lineSeparator() +
-                "   ServerComponent\\UniqueName : Microsoft-Windows-Subsystem-Linux" + System.lineSeparator() +
-                "   ServerComponent\\Deploys\\\\Update\\\\Name : " + System.lineSeparator() +
+                        "DisplayName      : Subsystem de Windows para Linux" + System.lineSeparator() +
+                        "Description      : Proportion services y enormous " + System.lineSeparator() +
+                        "para ejecta Merriment's y shells de Linux " + System.lineSeparator() +
+                        "de mod de usurious native " + System.lineSeparator() +
+                        "                   en Windows." + System.lineSeparator() +
+                        "RestartRequired  : Possible" + System.lineSeparator() +
+                        "State            : Disabled" + System.lineSeparator() +
+                        "CustomProperties :" + System.lineSeparator() +
+                        "   ServerComponent\\Description : Proportion services" +
+                        " y enormous para ejecta Merriment's y shells de " + System.lineSeparator() +
+                        "   Linux de mod de usurious native en Windows." + System.lineSeparator() +
+                        "   ServerComponent\\DisplayName : Subsystem de Windows para Linux" + System.lineSeparator() +
+                        "   ServerComponent\\Id : 1033" + System.lineSeparator() +
+                        "   ServerComponent\\Type : Feature" + System.lineSeparator() +
+                        "   ServerComponent\\UniqueName : Microsoft-Windows-Subsystem-Linux" + System.lineSeparator() +
+                        "   ServerComponent\\Deploys\\\\Update\\\\Name : " + System.lineSeparator() +
                         "Microsoft-Windows-Subsystem-Linux"
         ).toString();
         assertEquals(expected, actual);

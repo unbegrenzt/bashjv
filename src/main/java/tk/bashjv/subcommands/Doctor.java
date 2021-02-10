@@ -4,10 +4,10 @@
 
 package tk.bashjv.subcommands;
 
-import org.fusesource.jansi.Ansi;
-import picocli.CommandLine;
-import tk.bashjv.external.BashGitLabRunner;
-import tk.bashjv.external.outputs.DoctorOutputs;
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Model.CommandSpec;
+import picocli.CommandLine.Spec;
+import tk.bashjv.external.BashDoctor;
 
 import java.io.IOException;
 import java.util.concurrent.Callable;
@@ -17,18 +17,16 @@ import java.util.concurrent.Callable;
  * doctor console command for
  * get dependencies state and information
  */
-@CommandLine.Command(name = "doctor",
+@Command(name = "doctor",
         description = "Get dependencies state and information")
 public class Doctor implements Callable<Integer> {
-    @CommandLine.Spec
-    CommandLine.Model.CommandSpec spec;
+    @Spec
+    CommandSpec spec;
 
     @Override
     public Integer call() {
         try {
-            String consoleOutput = DoctorOutputs.hyperStatus();
-            Ansi output = BashGitLabRunner.getRunnerStatus(consoleOutput);
-            spec.commandLine().getOut().println(output);
+            BashDoctor.getDoctor(spec);
             return 0;
         } catch (IOException e) {
             e.printStackTrace();

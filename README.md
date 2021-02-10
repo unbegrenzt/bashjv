@@ -15,7 +15,7 @@ Download the release, only on Windows for now
 
 ## Contributing
 - Download and install the java 15 jdk
-- For send an enchacement, create them with testing code
+- For send an enhancement, create them with testing code
 - Contact me if you have questions
 
-[Contribution guidelines for this project](docs/CONTRIBUTING.md)
+[Contribution guidelines for this project](CONTRIBUTING.md)
