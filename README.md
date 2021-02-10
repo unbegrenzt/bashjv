@@ -18,4 +18,4 @@ Download the release, only on Windows for now
 - For send an enhancement, create them with testing code
 - Contact me if you have questions
 
-[Contribution guidelines for this project](CONTRIBUTING.md)
+[Contribution guidelines for this project](CONTRIBUTING)
