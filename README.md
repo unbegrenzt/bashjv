@@ -4,13 +4,13 @@ console app utils made for fancy developers 🖥
 ## Java version
 openjdk 15.0.2 2021-01-19
 
-##What the project does
+## What the project does
 For now help you to create your personalized Gitlab Runner on Kubernetes
 
-##Goals for this project
+## Goals for this project
 Help to use the bash with the best UX
 
-##Get started
+## Get started
 Download the release, only on Windows for now
 
 ## Contributing
