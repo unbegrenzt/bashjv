@@ -15,4 +15,9 @@ public class DoctorOutputsTest {
     void hyperStatus_NoArguments_NotThrows() {
         assertDoesNotThrow(DoctorOutputs::hyperStatus);
     }
+
+    @Test
+    void wslStatus_NoArguments_NotThrows() {
+        assertDoesNotThrow(DoctorOutputs::wslStatus);
+    }
 }

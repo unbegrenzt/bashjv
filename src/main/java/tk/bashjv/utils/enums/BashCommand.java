@@ -23,5 +23,6 @@ public enum BashCommand {
     /**
      * Hyper-v state bash command.
      */
-    HYPER_STATE
+    HYPER_STATE,
+    WSL_STATE
 }

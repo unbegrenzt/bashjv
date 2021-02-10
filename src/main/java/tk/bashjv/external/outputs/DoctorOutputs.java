@@ -29,4 +29,8 @@ public class DoctorOutputs {
     public static String hyperStatus() throws IOException {
         return Bash.execute(consoleCommands.Command(BashCommand.HYPER_STATE));
     }
+
+    public static String wslStatus() throws IOException {
+        return Bash.execute(consoleCommands.Command(BashCommand.WSL_STATE));
+    }
 }

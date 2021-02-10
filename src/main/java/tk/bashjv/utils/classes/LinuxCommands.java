@@ -18,6 +18,7 @@ public class LinuxCommands implements ConsoleCommands {
             case VALID_PSCORE -> "pwsh -command \"$PSVersionTable.PSEdition\"";
             case HELM_NAMESPACES -> "pwsh -command \"helm get all namespaces\"";
             case HYPER_STATE -> "pwsh -command \"Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V\"";
+            case WSL_STATE -> "pwsh -command \"Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux\"";
         };
     }
 }

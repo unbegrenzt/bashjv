@@ -36,4 +36,20 @@ public class BashDoctor {
             );
         }
     }
+
+    public static Ansi getWslStatus(String consoleOutput) {
+        if (consoleOutput.contains("State") && consoleOutput.contains("Enabled")) {
+            return ansi().render(
+                    "@|CYAN * |@ Hyper-v -- @|GREEN Enabled |@"
+            );
+        } else {
+            return ansi().render(
+                    "@|CYAN * |@Hyper-v -- @|RED Disabled |@" + System.lineSeparator() +
+                            "@|CYAN  \\_ |@" +
+                            "Use pwsh -- " +
+                            "@|BLUE Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All |@" +
+                            "Command"
+            );
+        }
+    }
 }
