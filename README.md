@@ -1,5 +1,6 @@
 # bashjv
 ![CI/CD workflow](https://github.com/unbegrenzt/bashjv/workflows/CI/CD%20workflow/badge.svg)
+![CodeQL](https://github.com/unbegrenzt/bashjv/workflows/CodeQL/badge.svg)
 
 
 console app made for fancy developers 🖥
