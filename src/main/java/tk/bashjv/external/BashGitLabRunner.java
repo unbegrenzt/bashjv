@@ -4,9 +4,9 @@
 
 package tk.bashjv.external;
 
-import tk.bashjv.utils.ExtCommands;
+import org.fusesource.jansi.Ansi;
 
-import java.io.IOException;
+import static org.fusesource.jansi.Ansi.ansi;
 
 /**
  * The type Bash git lab runner.
@@ -14,14 +14,17 @@ import java.io.IOException;
  * implementations
  */
 public class BashGitLabRunner {
-
     /**
      * Gets runner status.
      *
+     * @param consoleOutput the console output for the helm namespaces
      * @return the runner status
-     * @throws IOException the io exception
      */
-    public static String getRunnerStatus() throws IOException {
-        return Bash.execute(ExtCommands.VALID_PSCORE);
+    public static Ansi getRunnerStatus(String consoleOutput) {
+        if (consoleOutput.contains("gitlab-runner") && consoleOutput.contains("deployed")) {
+            return ansi().render("Gitlab runner -- @|GREEN RUNNING |@");
+        } else {
+            return ansi().render("Gitlab runner -- @|RED NOT RUNNING |@");
+        }
     }
 }

@@ -19,11 +19,9 @@ public class Bash {
     /**
      * Execute string.
      *
-     * @param command the command
-     *                to execute to the bash
+     * @param command the command                to execute to the bash
      * @return the string output of the bash
-     * @throws IOException the io exception
-     * if can't access to the console
+     * @throws IOException the io exception if can't access to the console
      */
     public static String execute(String command) throws IOException {
         Process process = Runtime.getRuntime()
@@ -32,13 +30,28 @@ public class Bash {
     }
 
     private static String printResults(Process process) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        String line = "",
+        String line,
                 output = "";
-        while ((line = reader.readLine()) != null) {
+
+        System.out.println("Standard Output:");
+        BufferedReader stdout = new BufferedReader(new InputStreamReader(
+                process.getInputStream()));
+        while ((line = stdout.readLine()) != null) {
             System.out.println(line);
             output = output.concat(line).concat(System.lineSeparator());
         }
+        stdout.close();
+
+        System.out.println("Standard Error:");
+        BufferedReader stderr = new BufferedReader(new InputStreamReader(
+                process.getErrorStream()));
+        while ((line = stderr.readLine()) != null) {
+            System.out.println(line);
+            output = output.concat(line).concat(System.lineSeparator());
+        }
+        stderr.close();
+        System.out.println("Done");
+
         return output;
     }
 }

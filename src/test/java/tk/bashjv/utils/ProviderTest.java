@@ -2,13 +2,13 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package utils;
+package tk.bashjv.utils;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
-import tk.bashjv.utils.OsSystem;
-import tk.bashjv.utils.Provider;
+import tk.bashjv.utils.enums.OsSystem;
+import tk.bashjv.utils.classes.Provider;
 
 import static org.junit.jupiter.api.Assertions.*;
 

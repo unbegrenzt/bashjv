@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="tk.bashjv.service.Bashjv spec" />
+      <entry_point TYPE="field" FQNAME="tk.bashjv.subcommands.GitlabRunner spec" />
+      <entry_point TYPE="field" FQNAME="tk.bashjv.subcommands.Doctor spec" />
+    </entry_points>
+    <pattern value="tk.bashjv.subcommands.GitlabRunner" method="status" />
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
