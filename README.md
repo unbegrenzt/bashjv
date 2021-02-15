@@ -1,5 +1,8 @@
 # bashjv
-console app tk.bashjv.utils made for fancy developers 🖥
+![CI/CD workflow](https://github.com/unbegrenzt/bashjv/workflows/CI/CD%20workflow/badge.svg)
+
+
+console app made for fancy developers 🖥
 
 ### Java version
 openjdk 15.0.2 2021-01-19
