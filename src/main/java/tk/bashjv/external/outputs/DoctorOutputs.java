@@ -30,6 +30,12 @@ public class DoctorOutputs {
         return Bash.execute(consoleCommands.Command(BashCommand.HYPER_STATE));
     }
 
+    /**
+     * Wsl status string.
+     *
+     * @return the string from the console
+     * @throws IOException the io exception
+     */
     public static String wslStatus() throws IOException {
         return Bash.execute(consoleCommands.Command(BashCommand.WSL_STATE));
     }

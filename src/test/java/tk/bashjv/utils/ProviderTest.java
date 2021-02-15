@@ -2,7 +2,7 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package utils;
+package tk.bashjv.utils;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnOs;

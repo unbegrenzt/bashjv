@@ -2,10 +2,9 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package external;
+package tk.bashjv.external;
 
 import org.junit.jupiter.api.Test;
-import tk.bashjv.external.BashDoctor;
 
 import static org.fusesource.jansi.Ansi.ansi;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -92,7 +91,6 @@ public class BashDoctorTest {
                         "@|BLUE docs.microsoft.com/en-us/windows/wsl/install-win10 |@" +
                         "website"
         ).toString();
-        System.out.println(expected);
         String actual = BashDoctor.getWslStatus(
                 "FeatureName      : Microsoft-Windows-Subsystem-Linux" + System.lineSeparator() +
                         "DisplayName      : Subsystem de Windows para Linux" + System.lineSeparator() +

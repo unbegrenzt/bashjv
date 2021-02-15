@@ -24,5 +24,8 @@ public enum BashCommand {
      * Hyper-v state bash command.
      */
     HYPER_STATE,
+    /**
+     * Wsl state bash command.
+     */
     WSL_STATE
 }

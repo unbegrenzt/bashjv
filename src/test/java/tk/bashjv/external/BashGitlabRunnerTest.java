@@ -2,10 +2,9 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package external;
+package tk.bashjv.external;
 
 import org.junit.jupiter.api.Test;
-import tk.bashjv.external.BashGitLabRunner;
 
 import static org.fusesource.jansi.Ansi.ansi;
 import static org.junit.jupiter.api.Assertions.*;

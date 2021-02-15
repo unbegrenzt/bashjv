@@ -1,8 +1,13 @@
+/*
+ * Develop by unbegrenzt at 2 - 2021.
+ */
+
+package tk.bashjv.service;
+
 import com.github.lalyos.jfiglet.FigletFont;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import picocli.CommandLine;
-import tk.bashjv.service.Bashjv;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +16,7 @@ import java.io.StringWriter;
 import static org.fusesource.jansi.Ansi.ansi;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BashJvArgsTest {
+class BashjvTest {
 
     private CommandLine cmd;
     private StringWriter sw;

@@ -30,13 +30,28 @@ public class Bash {
     }
 
     private static String printResults(Process process) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line,
                 output = "";
-        while ((line = reader.readLine()) != null) {
+
+        System.out.println("Standard Output:");
+        BufferedReader stdout = new BufferedReader(new InputStreamReader(
+                process.getInputStream()));
+        while ((line = stdout.readLine()) != null) {
             System.out.println(line);
             output = output.concat(line).concat(System.lineSeparator());
         }
+        stdout.close();
+
+        System.out.println("Standard Error:");
+        BufferedReader stderr = new BufferedReader(new InputStreamReader(
+                process.getErrorStream()));
+        while ((line = stderr.readLine()) != null) {
+            System.out.println(line);
+            output = output.concat(line).concat(System.lineSeparator());
+        }
+        stderr.close();
+        System.out.println("Done");
+
         return output;
     }
 }

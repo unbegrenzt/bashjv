@@ -2,7 +2,7 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package subcommands;
+package tk.bashjv.subcommands;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

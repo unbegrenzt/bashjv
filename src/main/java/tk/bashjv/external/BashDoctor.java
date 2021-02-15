@@ -41,6 +41,12 @@ public class BashDoctor {
         }
     }
 
+    /**
+     * Gets wsl status.
+     *
+     * @param consoleOutput the console output
+     * @return the wsl status formatted output
+     */
     public static Ansi getWslStatus(String consoleOutput) {
         if (consoleOutput.contains("State") && consoleOutput.contains("Enabled")) {
             return ansi().render(
@@ -64,6 +70,12 @@ public class BashDoctor {
         }
     }
 
+    /**
+     * Gets doctor.
+     *
+     * @param spec the spec
+     * @throws IOException the io exception
+     */
     public static void getDoctor(CommandSpec spec) throws IOException {
         String consoleOutput = DoctorOutputs.hyperStatus();
         Ansi output = BashDoctor.getHyperStatus(consoleOutput);

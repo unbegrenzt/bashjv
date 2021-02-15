@@ -2,10 +2,9 @@
  * Develop by unbegrenzt at 2 - 2021.
  */
 
-package external.outputs;
+package tk.bashjv.external.outputs;
 
 import org.junit.jupiter.api.Test;
-import tk.bashjv.external.outputs.DoctorOutputs;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
