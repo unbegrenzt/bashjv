@@ -24,4 +24,9 @@ public class DoctorOutputsTest {
     void dockerKubStatus_NoArguments_NotThrows() {
         assertDoesNotThrow(DoctorOutputs::dockerKubStatus);
     }
+
+    @Test
+    void helmStatus_NoArguments_NotThrows() {
+        assertDoesNotThrow(DoctorOutputs::helmStatus);
+    }
 }

@@ -120,22 +120,51 @@ public class BashDoctor {
     }
 
     /**
+     * Gets helm status.
+     *
+     * @param consoleOutput the console output
+     * @return the helm status formatted output
+     */
+    public static Ansi getHelmStatus(String consoleOutput) {
+        if (consoleOutput.contains("Version:")) {
+            return ansi().render(
+                    "@|CYAN * |@Helm -- @|GREEN Installed |@"
+            );
+        } else {
+            return ansi().render(
+                    "@|CYAN * |@Helm -- @|RED Not Installed |@" + System.lineSeparator() +
+                            "@|CYAN  \\_ |@" +
+                            "See more -- " +
+                            "@|BLUE https://helm.sh/docs/intro/quickstart/ |@"
+            );
+        }
+    }
+
+    /**
      * Gets doctor.
      *
      * @param spec the spec
      * @throws IOException the io exception
      */
     public static void getDoctor(CommandSpec spec) throws IOException {
+        //Hyper-v
         String consoleOutput = DoctorOutputs.hyperStatus();
         Ansi output = BashDoctor.getHyperStatus(consoleOutput);
         spec.commandLine().getOut().println(output);
 
+        //WSL
         consoleOutput = DoctorOutputs.wslStatus();
         output = BashDoctor.getWslStatus(consoleOutput);
         spec.commandLine().getOut().println(output);
 
+        //Docker - Kubernetes
         consoleOutput = DoctorOutputs.dockerKubStatus();
         output = BashDoctor.getDockerKubStatus(consoleOutput);
+        spec.commandLine().getOut().println(output);
+
+        //Helm
+        consoleOutput = DoctorOutputs.helmStatus();
+        output = BashDoctor.getHelmStatus(consoleOutput);
         spec.commandLine().getOut().println(output);
     }
 }
