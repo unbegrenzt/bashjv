@@ -56,7 +56,17 @@ public class DoctorOutputs {
      * @return the string from the console
      * @throws IOException the io exception
      */
-    public static String helmStatus() throws  IOException {
+    public static String helmStatus() throws IOException {
         return Bash.execute(consoleCommands.Command(BashCommand.HELM_STATE));
+    }
+
+    /**
+     * Pwsh status string.
+     *
+     * @return the string from the console
+     * @throws IOException the io exception
+     */
+    public static String pwshStatus() throws IOException {
+        return Bash.execute(consoleCommands.Command(BashCommand.VALID_PSCORE));
     }
 }

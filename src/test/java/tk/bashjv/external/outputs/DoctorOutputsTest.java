@@ -29,4 +29,9 @@ public class DoctorOutputsTest {
     void helmStatus_NoArguments_NotThrows() {
         assertDoesNotThrow(DoctorOutputs::helmStatus);
     }
+
+    @Test
+    void pwshStatus_NoArguments_NotThrows() {
+        assertDoesNotThrow(DoctorOutputs::pwshStatus);
+    }
 }
