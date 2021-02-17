@@ -24,7 +24,12 @@ public class BashGitLabRunner {
         if (consoleOutput.contains("gitlab-runner") && consoleOutput.contains("deployed")) {
             return ansi().render("@|CYAN * |@Gitlab runner -- @|GREEN Running |@");
         } else {
-            return ansi().render("@|CYAN * |@Gitlab runner -- @|RED Not Running |@");
+            return ansi().render(
+                    "@|CYAN * |@Gitlab runner -- @|RED Disabled |@" + System.lineSeparator() +
+                    "@|CYAN  \\_ |@" +
+                    "See more -- " +
+                    "@|BLUE https://docs.gitlab.com/runner/install/kubernetes.html use *gitlab-runner* namespace |@"
+            );
         }
     }
 }

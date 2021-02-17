@@ -27,7 +27,12 @@ public class BashGitlabRunnerTest {
 
     @Test
     void getRunnerStatus_UndeployStatus_NotRunningResponse() {
-        String expected = ansi().render("@|CYAN * |@Gitlab runner -- @|RED Not Running |@").toString();
+        String expected = ansi().render(
+                "@|CYAN * |@Gitlab runner -- @|RED Disabled |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "See more -- " +
+                        "@|BLUE https://docs.gitlab.com/runner/install/kubernetes.html use *gitlab-runner* namespace |@"
+        ).toString();
         String actual = BashGitLabRunner.getRunnerStatus(
                 "NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION"
         ).toString();
