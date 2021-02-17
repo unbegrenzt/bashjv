@@ -22,7 +22,7 @@ public class DoctorTest {
     }
 
     @Test
-    void gitlabRunner_status_ExitCodeZero() {
+    void call_execute_ExitCodeZero() {
         int exitCode = cmd.execute("doctor");
         assertEquals(0, exitCode);
     }
