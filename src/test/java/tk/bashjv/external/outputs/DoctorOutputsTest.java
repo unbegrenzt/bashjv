@@ -19,4 +19,9 @@ public class DoctorOutputsTest {
     void wslStatus_NoArguments_NotThrows() {
         assertDoesNotThrow(DoctorOutputs::wslStatus);
     }
+
+    @Test
+    void dockerKubStatus_NoArguments_NotThrows() {
+        assertDoesNotThrow(DoctorOutputs::dockerKubStatus);
+    }
 }

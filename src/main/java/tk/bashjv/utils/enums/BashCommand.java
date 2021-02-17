@@ -25,6 +25,10 @@ public enum BashCommand {
      */
     HYPER_STATE,
     /**
+     * Docker version bash command.
+     */
+    DOCK_KUB,
+    /**
      * Wsl state bash command.
      */
     WSL_STATE
