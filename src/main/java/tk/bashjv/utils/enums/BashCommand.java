@@ -31,5 +31,9 @@ public enum BashCommand {
     /**
      * Wsl state bash command.
      */
-    WSL_STATE
+    WSL_STATE,
+    /**
+     * Helm state bash command.
+     */
+    HELM_STATE
 }

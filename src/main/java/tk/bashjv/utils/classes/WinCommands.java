@@ -16,11 +16,12 @@ public class WinCommands implements ConsoleCommands {
     @Override
     public String Command(BashCommand bashCommand) {
         return switch (bashCommand) {
-            case VALID_PSCORE -> "pwsh -command \"$PSVersionTable.PSEdition\"";
+            case VALID_PSCORE -> "pwsh --version";
             case HELM_NAMESPACES -> "pwsh -command \"helm get all namespaces\"";
             case HYPER_STATE -> "pwsh -command \"Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V\"";
             case DOCK_KUB -> "pwsh -command \"docker version\"";
             case WSL_STATE -> "pwsh -command \"Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux\"";
+            case HELM_STATE -> "pwsh -command \"helm version\"";
         };
     }
 }

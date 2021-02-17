@@ -215,4 +215,34 @@ public class BashDoctorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void getHelmStatus_GetVersion_installedResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@Helm -- @|GREEN Installed |@"
+        ).toString();
+        String actual = BashDoctor.getHelmStatus(
+                        "version.BuildInfo{Version:\"v3.5.0\", " +
+                        "GitCommit:\"32c22239423b3b4ba6706d450bd044baffled9e6\", " +
+                        "GitTreeState:\"clean\", " +
+                        "GoVersion:\"go1.15.6\"}"
+        ).toString();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getHelmStatus_Throws_NotInstalledResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@Helm -- @|RED Not Installed |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "See more -- " +
+                        "@|BLUE https://helm.sh/docs/intro/quickstart/ |@"
+        ).toString();
+        String actual = BashDoctor.getHelmStatus(
+                "aside: The term 'aside' is not recognized as a name of a" +
+                        " cmdlet, function, script file, or executable program." + System.lineSeparator() +
+                        "Check the spelling of the name, or if a path was included" +
+                        ", verify that the path is correct and try again."
+        ).toString();
+        assertEquals(expected, actual);
+    }
 }

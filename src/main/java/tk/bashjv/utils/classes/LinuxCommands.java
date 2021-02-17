@@ -20,6 +20,7 @@ public class LinuxCommands implements ConsoleCommands {
             case HYPER_STATE -> "pwsh -command \"Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V\"";
             case DOCK_KUB -> "pwsh -command \"docker version\"";
             case WSL_STATE -> "pwsh -command \"Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux\"";
+            case HELM_STATE -> "pwsh -command \"helm version\"";
         };
     }
 }

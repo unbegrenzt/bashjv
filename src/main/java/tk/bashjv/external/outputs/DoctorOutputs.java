@@ -49,4 +49,14 @@ public class DoctorOutputs {
     public static String dockerKubStatus() throws IOException {
         return Bash.execute(consoleCommands.Command(BashCommand.DOCK_KUB));
     }
+
+    /**
+     * Helm status string.
+     *
+     * @return the string from the console
+     * @throws IOException the io exception
+     */
+    public static String helmStatus() throws  IOException {
+        return Bash.execute(consoleCommands.Command(BashCommand.HELM_STATE));
+    }
 }
