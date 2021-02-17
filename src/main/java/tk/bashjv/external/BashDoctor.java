@@ -141,15 +141,41 @@ public class BashDoctor {
     }
 
     /**
+     * Gets pwsh status.
+     *
+     * @param consoleOutput the console output
+     * @return the pwsh status formatted output
+     */
+    public static Ansi getPwshStatus(String consoleOutput) {
+        if (consoleOutput.contains("PowerShell")) {
+            return ansi().render(
+                    "@|CYAN * |@PowerShell Core -- @|GREEN Installed |@"
+            );
+        } else {
+            return ansi().render(
+                    "@|CYAN * |@PowerShell Core -- @|RED Not Installed |@" + System.lineSeparator() +
+                            "@|CYAN  \\_ |@" +
+                            "See more -- " +
+                            "@|BLUE https://github.com/PowerShell/PowerShell |@"
+            );
+        }
+    }
+
+    /**
      * Gets doctor.
      *
      * @param spec the spec
      * @throws IOException the io exception
      */
     public static void getDoctor(CommandSpec spec) throws IOException {
+        //powershell core
+        String consoleOutput = DoctorOutputs.pwshStatus();
+        Ansi output = BashDoctor.getPwshStatus(consoleOutput);
+        spec.commandLine().getOut().println(output);
+
         //Hyper-v
-        String consoleOutput = DoctorOutputs.hyperStatus();
-        Ansi output = BashDoctor.getHyperStatus(consoleOutput);
+        consoleOutput = DoctorOutputs.hyperStatus();
+        output = BashDoctor.getHyperStatus(consoleOutput);
         spec.commandLine().getOut().println(output);
 
         //WSL

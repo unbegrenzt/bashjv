@@ -245,4 +245,29 @@ public class BashDoctorTest {
         ).toString();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void getPwshStatus_GetVersion_InstalledResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@PowerShell Core -- @|GREEN Installed |@"
+        ).toString();
+        String actual = BashDoctor.getPwshStatus(
+                "PowerShell 7.1.1"
+        ).toString();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getPwshStatus_Throws_NotInstalledResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@PowerShell Core -- @|RED Not Installed |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "See more -- " +
+                        "@|BLUE https://github.com/PowerShell/PowerShell |@"
+        ).toString();
+        String actual = BashDoctor.getPwshStatus(
+                "Error command not found"
+        ).toString();
+        assertEquals(expected, actual);
+    }
 }
