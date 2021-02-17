@@ -4,6 +4,8 @@
 
 package tk.bashjv.external;
 
+import tk.bashjv.utils.classes.EnvVars;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,6 +17,8 @@ import java.io.InputStreamReader;
  * bash of the system.
  */
 public class Bash {
+
+    private static final Boolean isDevelopment = EnvVars.isDev();
 
     /**
      * Execute string.
@@ -33,24 +37,29 @@ public class Bash {
         String line,
                 output = "";
 
-        System.out.println("Standard Output:");
+        if (isDevelopment)
+            System.out.println("Standard Output:");
         BufferedReader stdout = new BufferedReader(new InputStreamReader(
                 process.getInputStream()));
         while ((line = stdout.readLine()) != null) {
-            System.out.println(line);
+            if (isDevelopment)
+                System.out.println(line);
             output = output.concat(line).concat(System.lineSeparator());
         }
         stdout.close();
 
-        System.out.println("Standard Error:");
+        if (isDevelopment)
+            System.out.println("Standard Error:");
         BufferedReader stderr = new BufferedReader(new InputStreamReader(
                 process.getErrorStream()));
         while ((line = stderr.readLine()) != null) {
-            System.out.println(line);
+            if (isDevelopment)
+                System.out.println(line);
             output = output.concat(line).concat(System.lineSeparator());
         }
         stderr.close();
-        System.out.println("Done");
+        if (isDevelopment)
+            System.out.println("Done");
 
         return output;
     }

@@ -22,9 +22,9 @@ public class BashGitLabRunner {
      */
     public static Ansi getRunnerStatus(String consoleOutput) {
         if (consoleOutput.contains("gitlab-runner") && consoleOutput.contains("deployed")) {
-            return ansi().render("Gitlab runner -- @|GREEN RUNNING |@");
+            return ansi().render("@|CYAN * |@Gitlab runner -- @|GREEN Running |@");
         } else {
-            return ansi().render("Gitlab runner -- @|RED NOT RUNNING |@");
+            return ansi().render("@|CYAN * |@Gitlab runner -- @|RED Not Running |@");
         }
     }
 }

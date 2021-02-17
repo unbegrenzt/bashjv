@@ -13,7 +13,7 @@ public class BashGitlabRunnerTest {
 
     @Test
     void getRunnerStatus_DeployedStatus_RunningResponse() {
-        String expected = ansi().render("Gitlab runner -- @|GREEN RUNNING |@").toString();
+        String expected = ansi().render("@|CYAN * |@Gitlab runner -- @|GREEN Running |@").toString();
         String actual = BashGitLabRunner.getRunnerStatus(
                 "NAME      NAMESPACE         REVISION" + System.lineSeparator() +
                         "gitlab-runner gitlab-runner-din 1       " + System.lineSeparator() +
@@ -27,7 +27,7 @@ public class BashGitlabRunnerTest {
 
     @Test
     void getRunnerStatus_UndeployStatus_NotRunningResponse() {
-        String expected = ansi().render("Gitlab runner -- @|RED NOT RUNNING |@").toString();
+        String expected = ansi().render("@|CYAN * |@Gitlab runner -- @|RED Not Running |@").toString();
         String actual = BashGitLabRunner.getRunnerStatus(
                 "NAME    NAMESPACE       REVISION        UPDATED STATUS  CHART   APP VERSION"
         ).toString();

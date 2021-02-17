@@ -39,4 +39,14 @@ public class DoctorOutputs {
     public static String wslStatus() throws IOException {
         return Bash.execute(consoleCommands.Command(BashCommand.WSL_STATE));
     }
+
+    /**
+     * Docker kubernetes status string.
+     *
+     * @return the string from the console
+     * @throws IOException the io exception
+     */
+    public static String dockerKubStatus() throws IOException {
+        return Bash.execute(consoleCommands.Command(BashCommand.DOCK_KUB));
+    }
 }

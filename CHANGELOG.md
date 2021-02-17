@@ -7,8 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 - bashJv hello message
 - gitlab runner status
-- gitlab runner install
-- gitlab runner update
+- gitlab runner deploy
 - bashJv doctor command
 
 [Unreleased]: https://github.com/unbegrenzt/bashjv

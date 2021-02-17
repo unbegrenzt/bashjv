@@ -71,6 +71,55 @@ public class BashDoctor {
     }
 
     /**
+     * Gets docker and kubernetes status.
+     *
+     * @param consoleOutput the console output
+     * @return the docker kubernetes status formatted output
+     */
+    public static Ansi getDockerKubStatus(String consoleOutput) {
+        if (consoleOutput.contains("Client: Docker Engine") &&
+                consoleOutput.contains("Server: Docker Engine") &&
+                !consoleOutput.contains("Kubernetes:")) {
+            return ansi().render(
+                    "@|CYAN * |@Docker -- @|GREEN Running |@" + System.lineSeparator() +
+                            "@|CYAN  \\_ |@" +
+                            "Kubernetes -- " +
+                            "@|RED Not Running |@" + System.lineSeparator() +
+                            "@|CYAN  !_ |@" +
+                            "Recommended -- " +
+                            "@|BLUE Start Kubernetes |@"
+            );
+        } else if (consoleOutput.contains("Client: Docker Engine") &&
+                consoleOutput.contains("Server: Docker Engine") &&
+                consoleOutput.contains("Kubernetes:")) {
+            return ansi().render(
+                    "@|CYAN * |@Docker -- @|GREEN Running |@" + System.lineSeparator() +
+                            "@|CYAN  \\_ |@" +
+                            "Kubernetes -- " +
+                            "@|GREEN Running |@"
+            );
+        } else if (consoleOutput.contains("Client: Docker Engine") &&
+                !consoleOutput.contains("Server: Docker Engine")) {
+            return ansi().render(
+                    "@|CYAN * |@Docker -- @|RED Not Running |@" + System.lineSeparator() +
+                            "@|CYAN  \\_ |@" +
+                            "Kubernetes -- " +
+                            "@|RED Not Running |@" + System.lineSeparator() +
+                            "@|CYAN  !_ |@" +
+                            "Recommended -- " +
+                            "@|BLUE Start docker server |@"
+            );
+        }
+
+        return ansi().render(
+                "@|CYAN * |@Docker -- @|RED Disabled |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "See more -- " +
+                        "@|BLUE https://www.docker.com/get-started |@"
+        );
+    }
+
+    /**
      * Gets doctor.
      *
      * @param spec the spec
@@ -83,6 +132,10 @@ public class BashDoctor {
 
         consoleOutput = DoctorOutputs.wslStatus();
         output = BashDoctor.getWslStatus(consoleOutput);
+        spec.commandLine().getOut().println(output);
+
+        consoleOutput = DoctorOutputs.dockerKubStatus();
+        output = BashDoctor.getDockerKubStatus(consoleOutput);
         spec.commandLine().getOut().println(output);
     }
 }

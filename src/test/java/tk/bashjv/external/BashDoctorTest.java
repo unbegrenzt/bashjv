@@ -31,7 +31,7 @@ public class BashDoctorTest {
     void hyperStatus_DisabledState_DisabledResponse() {
         String expected = ansi().render(
                 "@|CYAN * |@Hyper-v -- @|RED Disabled |@" + System.lineSeparator() +
-                "@|CYAN  \\_ |@" +
+                        "@|CYAN  \\_ |@" +
                         "Use pwsh -- " +
                         "@|BLUE Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All |@" +
                         "Command"
@@ -113,4 +113,106 @@ public class BashDoctorTest {
         ).toString();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void getDockerKubStatus_DisabledNotRunning_InstallResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@Docker -- @|RED Disabled |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "See more -- " +
+                        "@|BLUE https://www.docker.com/get-started |@"
+        ).toString();
+        String actual = BashDoctor.getDockerKubStatus(
+                "error during connect: In the default daemon configuration" +
+                        "on Windows, the docker client must be run with elevated" +
+                        "privileges to connect.: Get http://%2F%2F.%2Fpipe%2Fdocker" +
+                        "_engine/v1.24/version: open //./pipe/docker_engine: El " +
+                        "system no peed encounter el archive especial."
+        ).toString();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getDockerKubStatus_EnabledNotRunning_NotRunningResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@Docker -- @|RED Not Running |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "Kubernetes -- " +
+                        "@|RED Not Running |@" + System.lineSeparator() +
+                        "@|CYAN  !_ |@" +
+                        "Recommended -- " +
+                        "@|BLUE Start docker server |@"
+        ).toString();
+        String actual = BashDoctor.getDockerKubStatus(
+                "Client: Docker Engine - Community" + System.lineSeparator() +
+                        " Cloud integration: 1.0.7" + System.lineSeparator() +
+                        " Version:           20.10.2" + System.lineSeparator() +
+                        " API version:       1.41" + System.lineSeparator() +
+                        " Go version:        go1.13.15" + System.lineSeparator() +
+                        " Git commit:        2291f61" + System.lineSeparator() +
+                        " Built:             Mon Dec 28 16:14:16 2020" + System.lineSeparator() +
+                        " OS/Arch:           windows/amd64" + System.lineSeparator() +
+                        " Context:           default" + System.lineSeparator() +
+                        " Experimental:      true" + System.lineSeparator() +
+                        "error during connect: In the default daemon configuration" +
+                        "on Windows, the docker client must be run with elevated" +
+                        "privileges to connect.: Get http://%2F%2F.%2Fpipe%2Fdocker" +
+                        "_engine/v1.24/version: open //./pipe/docker_engine: El " +
+                        "system no peed encounter el archive especial."
+        ).toString();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getDockerKubStatus_RunningNotRunningKub_MixedResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@Docker -- @|GREEN Running |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "Kubernetes -- " +
+                        "@|RED Not Running |@" + System.lineSeparator() +
+                        "@|CYAN  !_ |@" +
+                        "Recommended -- " +
+                        "@|BLUE Start Kubernetes |@"
+        ).toString();
+        String actual = BashDoctor.getDockerKubStatus(
+                "Client: Docker Engine - Community" + System.lineSeparator() +
+                        " Cloud integration: 1.0.7" + System.lineSeparator() +
+                        " Version:           20.10.2" + System.lineSeparator() +
+                        "" + System.lineSeparator() +
+                        "Server: Docker Engine - Community" + System.lineSeparator() +
+                        " Engine:" + System.lineSeparator() +
+                        "  Version:          20.10.2" + System.lineSeparator() +
+                        "  API version:      1.41 (minimum version 1.12)" + System.lineSeparator() +
+                        "  Go version:       go1.13.15" + System.lineSeparator() +
+                        "  Git commit:       8891c58"
+        ).toString();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getDockerKubStatus_AllRunning_RunningResponse() {
+        String expected = ansi().render(
+                "@|CYAN * |@Docker -- @|GREEN Running |@" + System.lineSeparator() +
+                        "@|CYAN  \\_ |@" +
+                        "Kubernetes -- " +
+                        "@|GREEN Running |@"
+        ).toString();
+        String actual = BashDoctor.getDockerKubStatus(
+                "Client: Docker Engine - Community" + System.lineSeparator() +
+                        " Cloud integration: 1.0.7" + System.lineSeparator() +
+                        " Version:           20.10.2" + System.lineSeparator() +
+                        "" + System.lineSeparator() +
+                        "Server: Docker Engine - Community" + System.lineSeparator() +
+                        " Engine:" + System.lineSeparator() +
+                        "  Version:          20.10.2" + System.lineSeparator() +
+                        "  API version:      1.41 (minimum version 1.12)" + System.lineSeparator() +
+                        "  Go version:       go1.13.15" + System.lineSeparator() +
+                        "Kubernetes:" + System.lineSeparator() +
+                        "  Version:          v1.19.3" + System.lineSeparator() +
+                        "  StackAPI:         Unknown" + System.lineSeparator() +
+                        "  Git commit:       8891c58"
+        ).toString();
+        assertEquals(expected, actual);
+    }
+
 }
