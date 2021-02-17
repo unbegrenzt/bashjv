@@ -25,7 +25,9 @@ public class EnvVars {
             envVar = "Production";
         }
 
-        assert envVar != null;
-        return envVar.equals("Development");
+        if (envVar != null)
+            return envVar.equals("Development");
+        else
+            return false;
     }
 }
