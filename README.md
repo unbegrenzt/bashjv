@@ -22,4 +22,8 @@ Download the release, only on Windows for now
 - For send an enhancement, create them with testing code
 - Contact me if you have questions
 
+### Special Thanks
+- [hatchful](https://hatchful.shopify.com/es/)
+- [picocli](https://picocli.info)
+
 [Contribution guidelines for this project](CONTRIBUTING)
