@@ -5,6 +5,7 @@
 package tk.bashjv.external;
 
 import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
 import tk.bashjv.external.outputs.DoctorOutputs;
 import picocli.CommandLine.Model.CommandSpec;
 
@@ -168,6 +169,7 @@ public class BashDoctor {
      * @throws IOException the io exception
      */
     public static void getDoctor(CommandSpec spec) throws IOException {
+        AnsiConsole.systemInstall();
         //powershell core
         String consoleOutput = DoctorOutputs.pwshStatus();
         Ansi output = BashDoctor.getPwshStatus(consoleOutput);
@@ -192,5 +194,6 @@ public class BashDoctor {
         consoleOutput = DoctorOutputs.helmStatus();
         output = BashDoctor.getHelmStatus(consoleOutput);
         spec.commandLine().getOut().println(output);
+        AnsiConsole.systemUninstall();
     }
 }

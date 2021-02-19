@@ -44,6 +44,7 @@ public class Bashjv implements Callable<Integer> {
         AnsiConsole.systemInstall();
         Ansi helloMessage = ansi().render("@|blue " + FigletFont.convertOneLine("BashJv") + "|@");
         spec.commandLine().getOut().println(helloMessage);
+        AnsiConsole.systemUninstall();
         return 0;
     }
 

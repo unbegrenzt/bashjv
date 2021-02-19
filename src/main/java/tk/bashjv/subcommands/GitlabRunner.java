@@ -5,6 +5,7 @@
 package tk.bashjv.subcommands;
 
 import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
 import picocli.CommandLine.Spec;
 import picocli.CommandLine.Model.CommandSpec;
 import picocli.CommandLine.Command;
@@ -38,9 +39,11 @@ public class GitlabRunner implements Callable<Integer> {
             description = "Get the current status of the gitlab runner instance")
     int status() {
         try {
+            AnsiConsole.systemInstall();
             String consoleOutput = GitlabRunnerOutputs.gitlabRunnerStatus();
             Ansi output = BashGitLabRunner.getRunnerStatus(consoleOutput);
             spec.commandLine().getOut().println(output);
+            AnsiConsole.systemUninstall();
             return 0;
         } catch (IOException e) {
             e.printStackTrace();
