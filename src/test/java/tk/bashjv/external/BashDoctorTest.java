@@ -14,7 +14,7 @@ public class BashDoctorTest {
     @Test
     void hyperStatus_EnabledState_EnabledResponse() {
         String expected = ansi().render(
-                "@|CYAN * |@ Hyper-v -- @|GREEN Enabled |@"
+                "@|CYAN * |@Hyper-v -- @|GREEN Enabled |@"
         ).toString();
         String actual = BashDoctor.getHyperStatus(
                 "FeatureName      : Microsoft-Hyper-V" + System.lineSeparator() +

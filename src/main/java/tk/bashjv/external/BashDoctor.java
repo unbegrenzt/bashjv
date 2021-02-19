@@ -28,7 +28,7 @@ public class BashDoctor {
     public static Ansi getHyperStatus(String consoleOutput) {
         if (consoleOutput.contains("State") && consoleOutput.contains("Enabled")) {
             return ansi().render(
-                    "@|CYAN * |@ Hyper-v -- @|GREEN Enabled |@"
+                    "@|CYAN * |@Hyper-v -- @|GREEN Enabled |@"
             );
         } else {
             return ansi().render(
